@@ -8,6 +8,7 @@ import About from "@/components/About";
 import Programs from "@/components/Programs";
 import Gallery from "@/components/Gallery";
 import CTA from "@/components/CTA";
+import Results from "@/components/Results";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <About />
       <Programs />
       <Gallery />
+      <Results />
       <CTA />
       <Contact />
       <Footer />

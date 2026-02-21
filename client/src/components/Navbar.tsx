@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Despre Noi", href: "#despre" },
   { label: "Programe", href: "#programe" },
   { label: "Galerie", href: "#galerie" },
+  { label: "Rezultate", href: "#rezultate" },
   { label: "Contact", href: "#contact" },
 ];
 
