@@ -50,7 +50,7 @@ const matches = [
     id: 5,
     home: "Dan Matei",
     away: "U Evolution",
-    homeScore: 6,
+    homeScore: 7,
     awayScore: 2,
     status: "completed",
     date: "21 Feb 2026",
