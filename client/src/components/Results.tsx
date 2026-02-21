@@ -14,9 +14,9 @@ const matches = [
     id: 1,
     home: "Dan Matei",
     away: "Chinteni",
-    homeScore: null,
-    awayScore: null,
-    status: "upcoming",
+    homeScore: 6,
+    awayScore: 2,
+    status: "completed",
     date: "21 Feb 2026",
   },
   {
