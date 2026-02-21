@@ -1,25 +1,27 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
-
 /**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
+ * Design: Stadium Tunnel — Cinematic Sports Brutalism
+ * Home: Single-page layout combining all major sections in sequence.
  */
-export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Programs from "@/components/Programs";
+import Gallery from "@/components/Gallery";
+import CTA from "@/components/CTA";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
+export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div className="w-full overflow-hidden">
+      <Navbar />
+      <Hero />
+      <About />
+      <Programs />
+      <Gallery />
+      <CTA />
+      <Contact />
+      <Footer />
     </div>
   );
 }
