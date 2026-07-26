@@ -9,6 +9,7 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { toast } from "sonner";
+import { buildContactMailto } from "@/lib/contactMailto";
 
 const contactInfo = [
   {
@@ -46,23 +47,19 @@ export default function Contact() {
     phone: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success("Mesajul a fost trimis cu succes! Te vom contacta în curând.");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setLoading(false);
-    }, 1000);
+    window.location.href = buildContactMailto(formData);
+    toast.info(
+      "Am deschis aplicația de email. Verifică mesajul și apasă Trimite."
+    );
   };
 
   return (
@@ -80,7 +77,8 @@ export default function Contact() {
                 Contact
               </span>
               <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold uppercase leading-[0.95] text-white mb-8">
-                Ia<br />
+                Ia
+                <br />
                 <span className="text-gradient-gold">Contact</span>
               </h2>
             </motion.div>
@@ -144,7 +142,10 @@ export default function Contact() {
             <div className="space-y-6">
               {/* Name */}
               <div>
-                <label htmlFor="name" className="block font-heading text-sm uppercase tracking-wider text-white mb-2">
+                <label
+                  htmlFor="name"
+                  className="block font-heading text-sm uppercase tracking-wider text-white mb-2"
+                >
                   Nume Complet
                 </label>
                 <input
@@ -161,7 +162,10 @@ export default function Contact() {
 
               {/* Email */}
               <div>
-                <label htmlFor="email" className="block font-heading text-sm uppercase tracking-wider text-white mb-2">
+                <label
+                  htmlFor="email"
+                  className="block font-heading text-sm uppercase tracking-wider text-white mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -178,7 +182,10 @@ export default function Contact() {
 
               {/* Phone */}
               <div>
-                <label htmlFor="phone" className="block font-heading text-sm uppercase tracking-wider text-white mb-2">
+                <label
+                  htmlFor="phone"
+                  className="block font-heading text-sm uppercase tracking-wider text-white mb-2"
+                >
                   Telefon
                 </label>
                 <input
@@ -194,7 +201,10 @@ export default function Contact() {
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block font-heading text-sm uppercase tracking-wider text-white mb-2">
+                <label
+                  htmlFor="message"
+                  className="block font-heading text-sm uppercase tracking-wider text-white mb-2"
+                >
                   Mesaj
                 </label>
                 <textarea
@@ -212,20 +222,10 @@ export default function Contact() {
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={loading}
-                className="w-full bg-cyan text-[oklch(0.10_0.02_250)] font-heading text-sm uppercase tracking-[0.15em] px-6 py-4 rounded hover:bg-[oklch(0.85_0.15_200)] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 glow-cyan flex items-center justify-center gap-2"
+                className="w-full bg-cyan text-[oklch(0.10_0.02_250)] font-heading text-sm uppercase tracking-[0.15em] px-6 py-4 rounded hover:bg-[oklch(0.85_0.15_200)] transition-all duration-300 glow-cyan flex items-center justify-center gap-2"
               >
-                {loading ? (
-                  <>
-                    <span className="animate-spin">⏳</span>
-                    Se trimite...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    Trimite Mesajul
-                  </>
-                )}
+                <Send className="w-4 h-4" />
+                Deschide în Email
               </button>
             </div>
           </motion.form>
